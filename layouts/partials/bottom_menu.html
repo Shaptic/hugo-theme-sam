@@ -2,32 +2,30 @@
 <hr />
 <p>
 {{ end }}
-
+    <!--
     {{ if .show_back_menu_item }}
         <a href="{{ .Page.Section | relURL }}">back</a>
         {{ if .Page.Site.Params.mainMenu }}
             &#183;
         {{ end }}
-    {{ end }}
+    {{ end }} -->
+    <a href="{{.Page.Site.BaseURL}}">
+        {{ .Page.Site.Params.homepage }}</a>
 
     {{ if .Page.Site.Params.mainMenu }}
         {{ range first 1 .Page.Site.Params.mainMenu }}
+            &#183;
             <a href="{{ .link }}">
-                {{ .text }}
-            </a>
+                {{ .text }}</a>
         {{ end }}
-    
+
     {{ if ( gt ( len .Page.Site.Params.mainMenu ) 1 ) }}
         {{ range after 1 .Page.Site.Params.mainMenu }}
-            &#183; 
+            &#183;
             <a href="{{ .link }}">
-                {{ .text }}
-            </a>
+                {{ .text }}</a>
         {{ end }}
     {{ end }}
-    &#183; 
-    <a href="{{.Page.Site.BaseURL}}">
-        {{ .Page.Site.Params.homepage }}
-    </a>
+
 {{ end }}
 </p>

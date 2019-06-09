@@ -1,9 +1,25 @@
 {{ partial "head/metadata.html" . }}
 {{ partial "head/favicons.html" . }}
 {{ partial "head/css.html" . }}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 <!-- Google fonts-->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
 
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/opengraph.html" . }}
-{{ template "_internal/google_analytics_async.html" . }}
+
+<!--
+<style type="text/css">
+  ::selection {
+    background: #fff; /* WebKit/Blink Browsers */
+    color: black;
+  }
+  ::-moz-selection {
+    background: #fff; /* Gecko Browsers */
+    color: black;
+  }
+</style>
+ -->

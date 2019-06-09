@@ -3,29 +3,45 @@
     <head>
         {{ partial "head.html" . }}
         <title>{{ .Title }}</title>
+        <style>
+            .img-circle {
+                border-radius: 50%;
+                width: 200px;
+            }
+        </style>
     </head>
     <body>
-        <div class="section" id="splash">
+        <div style="
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            min-width: 600px;
+            width: 45%
+        ">
+            <div class="section" id="splash">
+                {{ if .Site.Params.mainMenu }}
+                    {{ range .Site.Params.mainMenu }}
+                        <div class="big-link">
+                            <a href="{{.link}}">
+                                {{.text}}
+                            </a>
+                        </div>
+                    {{ end }}
 
-            {{ if .Site.Params.mainMenu }}
-                {{ range .Site.Params.mainMenu }}
-                    <div class="big-link">
-                        <a href="{{.link}}">
-                            {{.text}}
-                        </a>
-                    </div>
+                {{ else }}
+                    {{ range .Site.Sections }}
+                        <div class="big-link">
+                            <a href="{{.Permalink}}">
+                                {{.Title}}
+                            </a>
+                        </div>
+                    {{ end }}
                 {{ end }}
+            </div>
 
-            {{ else }}
-                {{ range .Site.Sections }}
-                    <div class="big-link"> 
-                        <a href="{{.Permalink}}">
-                            {{.Title}}
-                        </a>
-                    </div>
-                {{ end }}
-            {{ end }}
-            
+            <div class="section" id="pic" style="margin-left: 5em">
+                <img src="{{$.Site.Params.profilePic}}" class="img-circle" alt="profile picture">
+            </div>
         </div>
     </body>
 </html>

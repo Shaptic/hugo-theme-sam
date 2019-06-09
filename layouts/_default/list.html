@@ -6,12 +6,13 @@
         <li>
             {{ if .Params.showDate }}
 
-            {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006")}} --
+            {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006")}} &mdash;
 
             {{ end }}
             <a href="{{.Permalink}}">
-                {{.Title}}
-            </a>
+                {{.Title}}</a>
+            <br><p style="letter-spacing: 1px; line-height: 1 !important;">
+                <i>{{.Summary}}</i></p>
         </li>
         {{ end }}
     </ul>
