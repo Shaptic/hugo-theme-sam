@@ -1,0 +1,48 @@
+.notice
+    color: $dark-grey
+    padding: 1rem
+    border-radius: 3px
+    font-size: 0.9rem
+    text-align: justify
+    line-height: 1.5
+    letter-spacing: 1px
+
+.warning
+    background-color: $warning !important
+
+.info
+    background-color: $info !important
+
+
+#container
+    width: 100%
+    max-width: 800px
+
+.row
+    display: flex
+    flex-direction: row
+    justify-content: left
+    padding-left: 10%
+    padding-right: 10%
+
+#container > .row
+    flex-direction: row-reverse
+    padding-top: 2rem
+
+#pic
+    flex-basis: 20%
+    align-self: center
+    padding-left: 1rem
+
+@media screen and (max-width: 736px)
+    #pic
+        margin-top: 8rem
+        margin-left: -3rem
+        img
+            align-self: center
+            width: 100px
+            height: 100px
+
+@media screen and (max-width: 321px)
+    #container > .row
+        flex-direction: column

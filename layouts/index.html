@@ -11,36 +11,33 @@
         </style>
     </head>
     <body>
-        <div style="
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-            min-width: 600px;
-            width: 45%
-        ">
-            <div class="section" id="splash">
-                {{ if .Site.Params.mainMenu }}
-                    {{ range .Site.Params.mainMenu }}
-                        <div class="big-link">
-                            <a href="{{.link}}">
-                                {{.text}}
-                            </a>
-                        </div>
-                    {{ end }}
+        <div id="container">
+            <div class="row">
+                <div id="pic">
+                    <img src="{{$.Site.Params.profilePic}}" class="img-circle" alt="profile picture">
+                </div>
 
-                {{ else }}
-                    {{ range .Site.Sections }}
-                        <div class="big-link">
-                            <a href="{{.Permalink}}">
-                                {{.Title}}
-                            </a>
-                        </div>
-                    {{ end }}
-                {{ end }}
-            </div>
+                <div class="section" id="splash">
+                    {{ if .Site.Params.mainMenu }}
+                        {{ range .Site.Params.mainMenu }}
+                            <div class="big-link">
+                                <a href="{{.link}}">
+                                    {{.text}}
+                                    {{.emoji | emojify}}
+                                </a>
+                            </div>
+                        {{ end }}
 
-            <div class="section" id="pic" style="margin-left: 5em">
-                <img src="{{$.Site.Params.profilePic}}" class="img-circle" alt="profile picture">
+                    {{ else }}
+                        {{ range .Site.Sections }}
+                            <div class="big-link">
+                                <a href="{{.Permalink}}">
+                                    {{.Title}}
+                                </a>
+                            </div>
+                        {{ end }}
+                    {{ end }}
+                </div>
             </div>
         </div>
     </body>

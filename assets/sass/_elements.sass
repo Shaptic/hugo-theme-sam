@@ -1,10 +1,12 @@
 #splash
     margin: auto 0
     height: 100vh
-    width: 45%
-    overflow: hidden
+    width: 75%
+    flex-basis: 80%
     @media screen and (max-width: 736px)
-        width: 90%
+        width: 100%
+        height: auto
+        white-space: nowrap
 
 .big-link
     font-family: $font
@@ -33,23 +35,24 @@
         text-align: left
     & p
         margin-bottom: 1em
-        line-height: 1.8
+        line-height: 1.5
         letter-spacing: 1.5px
         opacity: 0.8
     & .highlight
         width: 100%
     & pre
-        line-height: 2rem
+        line-height: 1rem
+        font-size: 0.5rem
         border-radius: 3px
         padding: 1rem
         overflow-x: auto
         background-color: $code-block
         width: 100%
         margin-bottom: 1em
+        color: black
     & pre > code
         border: none
     & code
-        font-size: 0.6rem
         font-family: 'Source Code Pro', monospace
         padding: 0.1rem
         letter-spacing: 0px
@@ -61,10 +64,13 @@
         display: block
         margin: 2rem auto
         opacity: 1
+    & figure
+        align-self: center
     & blockquote
         background-color: $links
         color: $dark-grey
         padding: 2rem
+        line-height: 1.25
         margin: 2rem 1rem 2rem 1rem
         border-radius: 3px
         a
@@ -85,10 +91,9 @@
             text-align: center
             border: 1px solid $links
     & li
-        line-height: 2
+        line-height: 1.25
         padding-left: 0.4rem
-        &:last-child
-            margin-bottom: 1rem
+        margin-bottom: 1rem
     & ul
         list-style: disc outside
         padding-left: 2rem

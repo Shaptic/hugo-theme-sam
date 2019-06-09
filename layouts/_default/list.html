@@ -4,15 +4,17 @@
     <ul>
         {{ range .Data.Pages }}
         <li>
-            {{ if .Params.showDate }}
-
-            {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006")}} &mdash;
-
-            {{ end }}
-            <a href="{{.Permalink}}">
-                {{.Title}}</a>
-            <br><p style="letter-spacing: 1px; line-height: 1 !important;">
-                <i>{{.Summary}}</i></p>
+            <p>
+                {{ if .Params.showDate }}
+                    {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006")}} &mdash;
+                {{ end }}
+                <a href="{{.Permalink}}">
+                    {{.Title}}</a>
+            </p>
+            <br>
+            <p style="letter-spacing: 1px; line-height: 1; font-size: smaller">
+                <i>{{.Summary}}</i>
+            </p>
         </li>
         {{ end }}
     </ul>

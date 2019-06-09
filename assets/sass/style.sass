@@ -31,10 +31,6 @@ h1,h2,h3
     font-family: 'Didact Gothic', sans-serif
     opacity: 0.6
 
-li
-    opacity: 0.8
-    & a
-        opacity: 0.9
 
 ul
     list-style-type: none
@@ -91,13 +87,15 @@ hr
     justify-content: center
     align-items: flex-start
 
-.bottom-menu
+.top-menu, .bottom-menu
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    padding-top: 3rem
     text-align: center
+
+.bottom-menu
+    padding-top: 3rem
 
 .footer
     width: 100%
@@ -117,6 +115,7 @@ hr
         border-bottom: none
         display: contents
 
+@import "custom"
 @import "elements"
 
 // Helpers
