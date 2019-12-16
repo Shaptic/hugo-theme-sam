@@ -28,6 +28,16 @@
 
         {{ block "section_title" . }}<div class="section" id="title">{{ .Title }}</div>{{ end }}
 
+        <!-- ignore empty links with + -->
+        {{ $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
+        <!-- at least one header to link to -->
+        {{ $has_headers := ge (len $headers) 1 }}
+        <!-- a post can explicitly disable Table of Contents with toc: false -->
+        {{ $show_toc := (eq $.Params.toc true) }}
+        {{ if and $has_headers $show_toc }}
+            {{ partial "table_of_contents.html" (dict "Page" . "Headers" $headers) }}
+        {{ end }}
+
         {{ block "section_content" . }}<div class="section" id="content">{{ .Content }}</div>{{ end }}
 
         {{ block "bottom-menu" . }}

@@ -1,6 +1,5 @@
 {{ if or ((.Page.Site.Params.mainMenu) (.show_back_menu_item)) }}
 <p>
-{{ end }}
     <!--
     {{ if .show_back_menu_item }}
         <a href="{{ .Page.Section | relURL }}">back</a>
@@ -27,3 +26,4 @@
         {{ end }}
     {{ end }}
 </p>
+{{ end }}

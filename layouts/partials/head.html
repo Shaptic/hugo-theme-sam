@@ -2,29 +2,32 @@
 {{ partial "head/favicons.html" . }}
 {{ partial "head/css.html" . }}
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+{{ partial "mathjax.html" . }}
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$']],
-      processEscapes: true,
-      processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-      TeX: { equationNumbers: { autoNumber: "AMS" },
-           extensions: ["AMSmath.js", "AMSsymbols.js"] }
-    }
-  });
-</script>
+<!-- Google fonts (use local because fuck tracking)-->
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic"> -->
 
-<!-- Google fonts-->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Didact+Gothic">
+<style>
+  /* didact-gothic-regular - latin */
+  /* https://google-webfonts-helper.herokuapp.com/ */
+  @font-face {
+    font-family: 'Didact Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/font/didact-gothic-v13-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Didact Gothic Regular'), local('DidactGothic-Regular'),
+         url('/font/didact-gothic-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/font/didact-gothic-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/font/didact-gothic-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('/font/didact-gothic-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('/font/didact-gothic-v13-latin-regular.svg#DidactGothic') format('svg'); /* Legacy iOS */
+  }
+</style>
 
+<!--
 {{ template "_internal/twitter_cards.html" . }}
 {{ template "_internal/opengraph.html" . }}
-
+ -->
 <!--
 <style type="text/css">
   ::selection {

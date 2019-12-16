@@ -1,0 +1,43 @@
+<div class="table-of-contents toc bd-callout">
+    <!-- TOC header -->
+    <h4 class="text-muted" id="toc-header">Table of Contents</h4>
+    <a id="toc-toggle">[hide]</a>
+    <div style="clear: both;"></div>
+
+    <div id="table-of-contents">
+        {{ range .Headers }}
+            {{ $header := . }}
+            {{ range first 1 (findRE "<h[1-2]" $header 1) }}
+                {{ range findRE "[1-2]" . 1 }}
+                    {{ $next_heading := (int .) }}
+                    <!-- generate li array of the proper depth -->
+                    {{ range seq $next_heading }}
+                        <ul class="toc-h{{ . }}">
+                    {{ end }}
+                    {{ $anchorId := ($header | plainify | htmlUnescape | anchorize) }}
+                    <a href="#{{$anchorId}}">
+                        <li>{{ $header | plainify | htmlUnescape }}</li>
+                    </a>
+                    <!-- close list -->
+                    {{ range seq $next_heading }}
+                        </ul>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <script>
+        var toc = document.getElementById("table-of-contents");
+        var hdr = document.getElementById("toc-toggle");
+        hdr.onclick = function() {
+            if (window.getComputedStyle(toc).display === "none") {
+                toc.style.display = "block";
+                hdr.innerHTML = "[hide]"
+            } else {
+                toc.style.display = "none";
+                hdr.innerHTML = "[show]"
+            }
+        };
+    </script>
+</div>
