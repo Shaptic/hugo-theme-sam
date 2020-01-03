@@ -128,6 +128,33 @@ p > img
             & a
                 color: $body-text
 
+    & p:not(.subtitle):nth-of-type(2)::first-letter,
+    & h1 + p::first-letter
+        font-family: serif
+        font-size: 300%
+        line-height: 1
+        letter-spacing: 1.5px
+        color: white
+        float: left
+        padding-right: 0.1em
+        padding-top: 0.175em
+
+    figcaption
+        text-align: center
+        margin: auto
+        width: 400px
+        margin-top: -1rem
+        & p
+            font-style: italic
+            font-size: smaller
+            line-height: 1rem
+
+.subtitle
+    margin: 0
+    line-height: 1.1rem
+    letter-spacing: 1px
+    font-size: smaller
+
 .tag
     padding: 0.25em 0em
     margin-right: 0.5em
