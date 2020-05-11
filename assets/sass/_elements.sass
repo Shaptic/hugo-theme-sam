@@ -48,7 +48,7 @@ p > img
         margin-bottom: 1em
     & h1,h2,h3
         margin: 1em 0em
-        text-align: right
+        // text-align: right
     & p
         margin-bottom: 1em
         line-height: 1.5
@@ -57,7 +57,7 @@ p > img
         width: 100%
     & pre
         line-height: 1rem
-        font-size: 0.5rem
+        font-size: 0.75rem
         border-radius: 3px
         padding: 1rem
         overflow-x: auto
@@ -69,7 +69,6 @@ p > img
         border: none
     & code
         font-family: 'Source Code Pro', monospace
-        font-size: smaller
         padding: 0.1rem
         letter-spacing: 0px
         border-radius: 3px
@@ -97,6 +96,8 @@ p > img
             margin-top: 1rem
         & li
             list-style: disc
+        > p
+            display: block
     & table
         width: 100%
         border-collapse: collapse
@@ -135,13 +136,13 @@ p > img
             & a
                 color: $body-text
 
-    & p:not(.subtitle):nth-of-type(2)::first-letter,
+    & > p:not(.subtitle):nth-of-type(2)::first-letter,
     & h1 + p::first-letter
         font-family: serif
         font-size: 300%
         line-height: 1
         letter-spacing: 1.5px
-        color: white
+        color: $body-text
         float: left
         padding-right: 0.1em
         padding-top: 0.175em
@@ -194,7 +195,7 @@ p > img
     opacity: 1
 
 .footnotes
-    font-size: 8pt
+    font-size: 9pt
     ol > li
         line-height: 1.75em !important
     li
