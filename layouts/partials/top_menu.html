@@ -1,28 +1,10 @@
-{{ if (or (.Page.Site.Params.mainMenu) (.show_back_menu_item)) }}
+{{ if or (.Page.Site.Params.mainMenu) (.show_back_menu_item) }}
 <p>
-    <!--
-    {{ if .show_back_menu_item }}
-        <a href="{{ .Page.Section | relURL }}">back</a>
-        {{ if .Page.Site.Params.mainMenu }}
-            &#183;
-        {{ end }}
-    {{ end }} -->
-    <a href="{{.Page.Site.BaseURL}}">
-        {{ .Page.Site.Params.homepage }}</a>
-
+    <a href="{{.Page.Site.BaseURL}}">{{ .Page.Site.Params.homepage }}</a>
     {{ if .Page.Site.Params.mainMenu }}
-        {{ range first 1 .Page.Site.Params.mainMenu }}
+        {{ range .Page.Site.Params.mainMenu }}
             &#183;
-            <a href="{{ .link }}">
-                {{ .text }}</a>
-        {{ end }}
-
-        {{ if ( gt ( len .Page.Site.Params.mainMenu ) 1 ) }}
-            {{ range after 1 .Page.Site.Params.mainMenu }}
-                &#183;
-                <a href="{{ .link }}">
-                    {{ .text }}</a>
-            {{ end }}
+            <a href="{{ .link | relURL }}">{{ .text }}</a>
         {{ end }}
     {{ end }}
 </p>

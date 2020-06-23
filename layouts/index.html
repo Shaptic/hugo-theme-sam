@@ -2,7 +2,7 @@
 <html>
     <head>
         {{ partial "head.html" . }}
-        <title>{{ .Title }}</title>
+        <title>{{ .Title | markdownify }}</title>
         <style>
             .img-circle {
                 border-radius: 50%;
@@ -11,34 +11,25 @@
         </style>
     </head>
     <body>
-        <div id="container">
-            <div class="row">
-                <div id="pic">
-                    <img src="{{$.Site.Params.profilePic}}" class="img-circle" alt="profile picture">
-                </div>
-
-                <div class="section" id="splash">
-                    {{ if .Site.Params.mainMenu }}
-                        {{ range .Site.Params.mainMenu }}
-                            <div class="big-link">
-                                <a href="{{.link}}">
-                                    {{.text}}
-                                    {{.emoji | emojify}}
-                                </a>
-                            </div>
-                        {{ end }}
-
-                    {{ else }}
-                        {{ range .Site.Sections }}
-                            <div class="big-link">
-                                <a href="{{.Permalink}}">
-                                    {{.Title}}
-                                </a>
-                            </div>
-                        {{ end }}
-                    {{ end }}
-                </div>
+        <div id="splash">
+            <div id="pic">
+                <img src="{{$.Site.Params.profilePic}}" class="img-circle" alt="profile picture">
             </div>
-        </div>
+            <nav role="navigation" class="flex-container">
+                {{ if .Site.Params.mainMenu }}
+                {{ range .Site.Params.mainMenu }}
+                    <a href="{{.link}}" class="big-link">
+                        {{.text}}
+                        {{.emoji | emojify}}
+                    </a>
+                {{ end }}
+                {{ else }}
+                {{ range .Site.Sections }}
+                    <a href="{{.RelPermalink}}" class="big-link">
+                        {{.Title | markdownify}}
+                    </a>
+                {{ end }}
+                {{ end }}
+            </nav>
     </body>
 </html>

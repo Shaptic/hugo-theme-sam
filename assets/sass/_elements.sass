@@ -3,6 +3,7 @@ p > img
 
 .toc
     margin: 0
+    margin-bottom: 2rem
     padding: 1rem
     border: 1px solid black
     background-color: lighten($dark-grey, 5%)
@@ -16,30 +17,37 @@ p > img
 
 #splash
     margin: auto 0
-    height: 100vh
+    padding-top: 2rem
     width: 75%
-    flex-basis: 80%
+    display: flex
+
+    flex-flow: row-reverse wrap
+    justify-content: space-evenly
+    min-height: calc(100vh - 6em)
+
     @media screen and (max-width: 736px)
         width: 100%
         height: auto
         white-space: nowrap
 
 .big-link
-    font-family: $font
     font-size: 3rem
     font-weight: 300
     margin-bottom: 2rem
     line-height: 1.5em
 
-#title
-    margin-top: 3rem
-    font-family: $font
-    font-size: 2rem
-    line-height: 3rem
-    margin-bottom: 2rem
+.post-title
+    margin: 0
 
-#content
-    margin: 2rem 0
+.post-summary
+    margin: 0
+    letter-spacing: 1px
+    font-style: italic
+    font-size: smaller
+
+
+article
+    width: 100%
     line-height: 2em
     letter-spacing: 2px
     div
@@ -50,6 +58,7 @@ p > img
         margin: 1em 0em
         // text-align: right
     & p
+        display: block
         margin-bottom: 1em
         line-height: 1.5
         letter-spacing: 1.5px
@@ -127,7 +136,7 @@ p > img
         list-style: decimal outside
         padding-left: 2rem
     & .gist
-        width: 100%
+        max-width: 100%
         td, th
             text-align: left
             border: 0
@@ -170,6 +179,7 @@ p > img
     opacity: 0.6
 
 .grid
+    margin: 1em auto
     display: grid
     grid-gap: 20px
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))

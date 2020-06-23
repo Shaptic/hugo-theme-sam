@@ -1,22 +1,25 @@
 {{ define "section_content" }}
-<div class="section" id="content">
+<article class="flex-container">
     {{ .Content }}
+<nav role="navigation">
     <ul>
         {{ range .Data.Pages }}
         <li>
-            <p>
+            <p class="post-title">
                 {{ if .Params.showDate }}
                     {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006")}} &mdash;
                 {{ end }}
                 <a href="{{.Permalink}}">
-                    {{.Title}}</a>
+                    {{ .Title | markdownify }}
+                </a>
             </p>
-            <br>
-            <p style="letter-spacing: 1px; line-height: 1; font-size: smaller">
-                <i>{{.Summary}}</i>
+            <p class="post-summary">
+                {{.Summary}}
             </p>
         </li>
         {{ end }}
     </ul>
-</div>
+</nav>
+</article>
+
 {{ end }}

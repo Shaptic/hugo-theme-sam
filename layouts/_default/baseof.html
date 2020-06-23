@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -11,23 +12,27 @@
     {{ end }}
     <title>
         {{ block "title" . }}
-        {{ .Title }}
+        {{ .Title | markdownify}}
         {{ end }}
     </title>
 </head>
 
 <body>
-    {{ block "main" . }}<div class="wrap">
-        {{ if .Params.showTopMenu }}
-            {{ block "top-menu" . }}
-                <div class="section top-menu">
-                    {{ partial "top_menu.html" (dict "Page" . "show_back_menu_item" false) }}
-                </div>
-            {{ end }}
-        {{ end }}
+    {{ block "main" . }}
+    <!-- {{ block "top-menu" . }}
+    {{ if .Params.showTopMenu }}
+        <div class="section top-menu">
+            {{ partial "top_menu.html" (dict "Page" . "show_back_menu_item" false) }}
+        </div>
+    {{ end }}
+    {{ end }} -->
 
-        {{ block "section_title" . }}<div class="section" id="title">{{ .Title }}</div>{{ end }}
-
+    {{ block "section_title" . }}
+    <header class="wrap flex-container">
+        {{ .Title | markdownify }}
+    </header>
+    {{ end }}
+    <main class="wrap">
         <!-- ignore empty links with + -->
         {{ $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
         <!-- at least one header to link to -->
@@ -38,14 +43,22 @@
             {{ partial "table_of_contents.html" (dict "Page" . "Headers" $headers) }}
         {{ end }}
 
-        {{ block "section_content" . }}<div class="section" id="content">{{ .Content }}</div>{{ end }}
-
-        {{ block "bottom-menu" . }}
-        {{ if .Site.Params.mainMenu }}<div class="section bottom-menu">{{ partial "bottom_menu.html" (dict "Page" . "show_back_menu_item" false) }}</div>{{ end }}
+        {{ block "section_content" . }}
+        <article role="article" class="flex-container">{{ .Content }}</article>
         {{ end }}
 
-        {{ block "footer" . }}<div class="section footer">{{ partial "footer.html" . }}</div>{{ end }}
-    </div>{{ end }}
+        {{ block "bottom-menu" . }}
+        {{ if .Site.Params.mainMenu }}
+        <nav role="navigation" class="flex-container bottom-menu">
+            {{ partial "bottom_menu.html" (dict "Page" . "show_back_menu_item" false) }}
+        </nav>
+        {{ end }}
+        {{ end }}
+    </main>
+    {{ block "footer" . }}
+    <footer class="flex-container footer">{{ partial "footer.html" . }}</footer>
+    {{ end }}
+    {{ end }}
 </body>
 
 </html>
