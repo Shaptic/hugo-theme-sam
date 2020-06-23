@@ -19,18 +19,20 @@
 
 <body>
     {{ block "main" . }}
+    {{ block "top-menu" . }}
+    {{ if .Params.showTopMenu }}
+        <div class="section top-menu">
+            {{ partial "top_menu.html" (dict "Page" . "show_back_menu_item" false) }}
+        </div>
+    {{ end }}
+    {{ end }}
+
     {{ block "section_title" . }}
     <header class="wrap flex-container">
-        {{ block "top-menu" . }}
-        {{ if .Params.showTopMenu }}
-            <div class="section top-menu">
-                {{ partial "top_menu.html" (dict "Page" . "show_back_menu_item" false) }}
-            </div>
-        {{ end }}
-        {{ end }}
         {{ .Title | markdownify }}
     </header>
     {{ end }}
+
     <main class="wrap">
         <!-- ignore empty links with + -->
         {{ $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}

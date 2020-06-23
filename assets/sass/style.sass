@@ -69,13 +69,18 @@ hr
 
 .wrap
     margin: 0 auto
-    width: 45%
     max-width: 64em
+    width: 45%
+
     @media screen and (max-width: 1024px)
         padding: 1rem
         width: 80%
     @media screen and (max-width: 736px)
         width: 90%
+    @media screen and (max-width: 480px)
+        width: 100%
+        article ul
+            padding-left: 1rem
 
 .tag-container
     display: inline
@@ -105,7 +110,8 @@ hr
     padding-top: 3rem
 
 .top-menu
-    margin-top: -3rem
+    margin: 0
+    // margin-top: 1rem
     padding-bottom: 3.5rem
     font-size: 1rem
     align-self: center
