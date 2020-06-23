@@ -5,6 +5,9 @@
         {{ .Date.Format (.Site.Params.dateForm | default "Mon Jan 02, 2006") }}
         &#183;
         {{ .WordCount }} words
+        &#183;
+        a {{ .ReadingTime }} minute read
+
         {{ with .Params.tags }}
             <!-- <div class="tag-container"> -->
                 &#183;
